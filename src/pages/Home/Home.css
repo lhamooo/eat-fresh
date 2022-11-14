@@ -76,10 +76,22 @@
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
+  position: absolute;
 }
 
 .row-title {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
+}
+
+.recipes {
+  margin-top: 2vh;
+  margin-left: -0.5vw;
+}
+
+.single-recipe {
+  margin-top: 4vh;
+  
+
 }
