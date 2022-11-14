@@ -1,0 +1,18 @@
+.navbar {
+  margin-top: -4%;
+  margin-left: -8vw;
+}
+
+.logo {
+  position: absolute;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  width: 10vw;
+  margin-top: 3.5%;
+  margin-left: 7%;
+}
