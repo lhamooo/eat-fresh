@@ -1,0 +1,36 @@
+.meal-image {
+  width: 80%;
+}
+
+.li-mesure {
+  font-family: "SourceSansPro-SemiBold", sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.li-ingrediens {
+  font-family: "SourceSansPro-Light", sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.col-ingrediens {
+  margin-left: -5vw;
+}
+
+.col-introduction-title {
+  font-family: "SourceSansPro-SemiBold", sans-serif;
+  color: #00c481;
+  margin-top: 3vh;
+}
+
+.inrtoduction {
+  font-family: "SourceSansPro-Light", sans-serif;
+}
+
+.title-modal {
+  font-family: "SourceSansPro-SemiBold", sans-serif;
+  font-size: 2em;
+}

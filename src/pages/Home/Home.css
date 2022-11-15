@@ -13,6 +13,7 @@
 }
 
 .search-button {
+  font-family: "SourceSansPro-SemiBold", sans-serif;
   border-radius: 30px;
   background-color: #00c481;
   border-color: #00c481;

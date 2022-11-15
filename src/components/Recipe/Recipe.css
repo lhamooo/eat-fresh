@@ -1,5 +1,14 @@
 .recipe-button {
+  font-family: "SourceSansPro-SemiBold", sans-serif;
   background-color: #00c481;
   border-radius: 30px;
   border-color: #00c481;
+}
+
+.card-title {
+  font-family: "SourceSansPro-SemiBold", sans-serif;
+}
+
+#card-subtitle {
+  font-family: "SourceSansPro-SemiBold", sans-serif;
 }
