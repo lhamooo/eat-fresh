@@ -93,6 +93,12 @@
 
 .single-recipe {
   margin-top: 4vh;
-  
+}
 
+.menu-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 3vh;
+  margin-left: 2vh;
 }

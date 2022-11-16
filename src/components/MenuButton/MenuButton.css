@@ -1,0 +1,24 @@
+.main-button {
+  background-color: #00c481;
+  color: white;
+}
+
+.foating-button {
+  bottom: 0px;
+  position: fixed;
+  bottom: 106px;
+  left: 10px;
+}
+
+.addIcon {
+  color: white;
+}
+
+.closeIcon {
+  color: white;
+}
+
+.child-button {
+  background-color: #bebebe;
+  color: white;
+}

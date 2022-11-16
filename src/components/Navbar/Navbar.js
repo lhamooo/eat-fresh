@@ -1,11 +1,10 @@
-import { Container, Col } from "react-bootstrap";
 import "./Navbar.css";
 import logo from "./logo_tx_white.png";
 
 function Navbar() {
   return (
     <div className="navbar">
-      <img className="logo" src={logo}></img>
+      <img className="logo" src={logo} alt="TX Group AG"></img>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#00C481"

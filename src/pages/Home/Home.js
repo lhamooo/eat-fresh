@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import image from "./image.jpg";
 import { useState } from "react";
 import Recipe from "../../components/Recipe/Recipe";
+import MenuButton from "../../components/MenuButton/MenuButton";
 
 function Home() {
   const [meal, setMeal] = useState("");
@@ -14,18 +15,40 @@ function Home() {
   const [randomMeal, setRandomMeal] = useState([]);
   const [showPicture, setShowPicture] = useState(true);
   const forbidden = ["", " ", "", " ", null];
+  const newDate = new Date();
+  const date = `${newDate.getDate()}.${
+    newDate.getMonth() + 1
+  }.${newDate.getFullYear()}.${newDate.getMilliseconds()}`;
+
+  function hasFavoriteMeal(array) {
+    const ids = Object.getOwnPropertyNames(localStorage);
+    //console.log("HUHU", ids);
+    for (let id of ids) {
+      for (let mealObject of array) {
+        if (mealObject.idMeal === id) {
+          let index = array.indexOf(mealObject);
+          let element = array.splice(index, 1)[0];
+          array.splice(0, 0, element);
+          // console.log("HEEEEELLOOO", array);
+        }
+      }
+    }
+  }
 
   async function handleSearch() {
     setSearched(true);
     const response = await fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`
     );
-    console.log(response);
+    localStorage.setItem(date, meal);
+    //localStorage.clear();
     const data = await response.json();
+    hasFavoriteMeal(data.meals);
     setMealArray(data.meals);
     setShowPicture(false);
     setRandomSearch(false);
-    console.log(mealArray);
+    //console.log(date);
+    //console.log(localStorage);
   }
 
   async function handleRandom() {
@@ -34,12 +57,11 @@ function Home() {
       "https://www.themealdb.com/api/json/v1/1/random.php"
     );
     const data = await response.json();
-    console.log("data ", data);
+    //console.log("data ", data);
     setRandomMeal(data.meals);
     setShowPicture(false);
     setSearched(false);
-    console.log("randomMeal ", randomMeal[0]);
-    console.log(data.meals[0]);
+    //console.log(data.meals[0]);
   }
 
   function handleChange(event) {
@@ -64,7 +86,6 @@ function Home() {
         }
       }
     }
-    console.log(array);
     return array;
   }
 
@@ -92,6 +113,7 @@ function Home() {
               <h1 className="title">EatFresh</h1>
             </Col>
           </Row>
+
           <Row className="row-search">
             <Col className="col-search">
               <Form.Control
@@ -102,6 +124,7 @@ function Home() {
             </Col>
             <Col className="col-search-button">
               <Button
+                disabled={meal.length > 0 ? false : true}
                 className="search-button"
                 variant="success"
                 onClick={handleSearch}
@@ -111,11 +134,13 @@ function Home() {
               </Button>
             </Col>
           </Row>
+
           <Row className="row-text">
             <Col className="col-text">
               <p className="text">don't know what to cook?</p>
             </Col>
           </Row>
+
           <Row className="row-random">
             <Col>
               <Button
@@ -147,7 +172,7 @@ function Home() {
                     <Col className="single-recipe" key={mealObj.idMeal}>
                       {console.log(getMealInfo("strMeasure", mealObj))}
                       <Recipe
-                        id={mealObj.id}
+                        id={mealObj.idMeal}
                         name={mealObj.strMeal}
                         area={mealObj.strArea}
                         category={mealObj.strCategory}
@@ -177,6 +202,7 @@ function Home() {
                 <Row>
                   <Col className="single-recipe">
                     <Recipe
+                      id={randomMeal[0].idMeal}
                       name={randomMeal[0].strMeal}
                       area={randomMeal[0].strArea}
                       category={randomMeal[0].strCategory}
@@ -193,6 +219,9 @@ function Home() {
             )}
           </Row>
         </Container>
+      </div>
+      <div className="menu-button">
+        <MenuButton />
       </div>
     </div>
   );

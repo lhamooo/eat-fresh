@@ -3,6 +3,8 @@
   background-color: #00c481;
   border-radius: 30px;
   border-color: #00c481;
+  display: flex;
+  justify-content: left;
 }
 
 .card-title {
@@ -12,3 +14,10 @@
 #card-subtitle {
   font-family: "SourceSansPro-SemiBold", sans-serif;
 }
+
+.col-heart {
+  display: flex;
+  justify-content: right;
+  color: #00c481;
+}
+

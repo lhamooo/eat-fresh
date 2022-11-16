@@ -1,5 +1,5 @@
 import "./RecipeModal.css";
-import { Container, Modal, Row, Col, Table } from "react-bootstrap";
+import { Container, Modal, Row, Col } from "react-bootstrap";
 
 function RecipeModal({
   handleCloseModal,
@@ -30,7 +30,7 @@ function RecipeModal({
           <Container>
             <Row>
               <Col>
-                <img className="meal-image" src={image} alt="meal image"></img>
+                <img className="meal-image" src={image} alt="meal"></img>
               </Col>
               <Col>
                 {measure.map((m) => (

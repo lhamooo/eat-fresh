@@ -2,8 +2,11 @@ import { useState } from "react";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import "./Recipe.css";
 import RecipeModal from "../RecipeModal/RecipeModal";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 function Recipe({
+  id,
   name,
   area,
   category,
@@ -13,6 +16,23 @@ function Recipe({
   measure,
 }) {
   const [modalShow, setModalShow] = useState(false);
+  const [fillHeart, setFillHeart] = useState(localStorage.getItem(id));
+
+  function handleClickEmptyHeart() {
+    setFillHeart(true);
+
+    localStorage.setItem(id, name);
+    //console.log(localStorage);
+  }
+
+  function handleClickFilledHeart() {
+    setFillHeart(false);
+
+    localStorage.removeItem(id);
+    //console.log(localStorage);
+    //console.log(localStorage.getItem(id));
+  }
+
   return (
     <div>
       <Card style={{ width: "18rem" }}>
@@ -36,7 +56,18 @@ function Recipe({
                   see recipe
                 </Button>
               </Col>
-              <Col>
+              <Col className="col-heart">
+                {fillHeart ? (
+                  <FavoriteIcon
+                    fontSize="large"
+                    onClick={handleClickFilledHeart}
+                  />
+                ) : (
+                  <FavoriteBorderIcon
+                    fontSize="large"
+                    onClick={handleClickEmptyHeart}
+                  />
+                )}
               </Col>
             </Row>
           </Container>
