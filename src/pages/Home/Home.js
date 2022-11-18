@@ -1,9 +1,9 @@
-import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar";
 import SearchIcon from "@mui/icons-material/Search";
 import image from "./image.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Recipe from "../../components/Recipe/Recipe";
 import MenuButton from "../../components/MenuButton/MenuButton";
 
@@ -14,6 +14,7 @@ function Home() {
   const [mealArray, setMealArray] = useState([]);
   const [randomMeal, setRandomMeal] = useState([]);
   const [showPicture, setShowPicture] = useState(true);
+  const [isMealNull, setIsMealNull] = useState(false);
   const forbidden = ["", " ", "", " ", null];
   const newDate = new Date();
   const date = `${newDate.getDate()}.${
@@ -22,14 +23,14 @@ function Home() {
 
   function hasFavoriteMeal(array) {
     const ids = Object.getOwnPropertyNames(localStorage);
-    //console.log("HUHU", ids);
     for (let id of ids) {
-      for (let mealObject of array) {
-        if (mealObject.idMeal === id) {
-          let index = array.indexOf(mealObject);
-          let element = array.splice(index, 1)[0];
-          array.splice(0, 0, element);
-          // console.log("HEEEEELLOOO", array);
+      if (array != null) {
+        for (let mealObject of array) {
+          if (mealObject.idMeal === id) {
+            let index = array.indexOf(mealObject);
+            let element = array.splice(index, 1)[0];
+            array.splice(0, 0, element);
+          }
         }
       }
     }
@@ -47,8 +48,12 @@ function Home() {
     setMealArray(data.meals);
     setShowPicture(false);
     setRandomSearch(false);
-    //console.log(date);
-    //console.log(localStorage);
+    if (data.meals === null) {
+      setIsMealNull(true);
+    }
+    if (data.meals !== null) {
+      setIsMealNull(false);
+    }
   }
 
   async function handleRandom() {
@@ -57,11 +62,10 @@ function Home() {
       "https://www.themealdb.com/api/json/v1/1/random.php"
     );
     const data = await response.json();
-    //console.log("data ", data);
     setRandomMeal(data.meals);
+    setIsMealNull(false);
     setShowPicture(false);
     setSearched(false);
-    //console.log(data.meals[0]);
   }
 
   function handleChange(event) {
@@ -90,14 +94,14 @@ function Home() {
   }
 
   function isRandomMeal() {
-    if (randomSearch && randomMeal.length > 0) {
+    if (randomMeal !== null && randomSearch && randomMeal.length > 0) {
       return true;
     }
     return false;
   }
 
   function isMeal() {
-    if (searched && mealArray.length >= 0) {
+    if (mealArray !== null && searched && mealArray.length > 0) {
       return true;
     }
     return false;
@@ -127,6 +131,7 @@ function Home() {
                 disabled={meal.length > 0 ? false : true}
                 className="search-button"
                 variant="success"
+                type="submit"
                 onClick={handleSearch}
               >
                 {" "}
@@ -154,17 +159,20 @@ function Home() {
             </Col>
           </Row>
 
-          {searched ? (
-            meal === "" ? (
-              <Alert variant="danger">Please enter a meal</Alert>
+          <Row>
+            {isMealNull ? (
+              <Container>
+                <Row>
+                  <Col className="col-error-message">
+                    <h1 className="error-message">
+                      Sorry, we couldn't find that recipe
+                    </h1>
+                  </Col>
+                </Row>
+              </Container>
             ) : (
               <></>
-            )
-          ) : (
-            <></>
-          )}
-
-          <Row>
+            )}
             {isMeal() ? (
               <Container className="recipes">
                 <Row xs={2} md={2} lg={3}>

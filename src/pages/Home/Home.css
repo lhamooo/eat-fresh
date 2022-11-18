@@ -102,3 +102,14 @@
   margin-bottom: 3vh;
   margin-left: 2vh;
 }
+
+.error-message {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.col-error-message {
+  margin-top: 15vh;
+  text-align: center;
+}
