@@ -78,13 +78,26 @@
   margin-left: 2vh;
 }
 
-.error-message {
-  width: 80%;
-}
-
 .error-image {
   width: 20%;
   margin-top: 5vh;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.col-error-image {
+  display: flex;
+  justify-content: center;
+}
+
+.col-error-message {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 1205px) {
@@ -120,5 +133,8 @@
 @media only screen and (max-width: 485px) {
   .image {
     margin-top: 8vh;
+  }
+  .error-message {
+    font-size: 1em;
   }
 }

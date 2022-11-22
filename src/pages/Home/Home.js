@@ -161,9 +161,9 @@ function Home() {
 
           <Row>
             {isMealNull ? (
-              <Container>
+              <Container className="error-container">
                 <Row>
-                  <Col>
+                  <Col className="col-error-image">
                     <img
                       className="error-image"
                       src={errorImage}
