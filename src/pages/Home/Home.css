@@ -1,9 +1,13 @@
+.form {
+  margin-top: -110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title {
   font-family: "Pacifico", sans-serif;
   color: #00c481;
-  width: 50%;
-  margin-left: 30%;
-  margin-right: 20%;
 }
 
 .search {
@@ -20,32 +24,18 @@
 }
 
 .row-search {
-  margin-top: 2vh;
-  width: 50%;
-  margin-left: 26%;
-  margin-right: 24%;
-}
-
-.col-search {
+  position: absolute;
+  margin-top: 7vh;
   margin-left: 4vw;
 }
 
-.col-search-button {
-  margin-left: -1vw;
+.row-text {
+  margin-top: 50px;
 }
 
 .text {
   font-family: "SourceSansPro-Light", sans-serif;
-  width: 50%;
-  margin-left: 30%;
-  margin-right: 20%;
   margin-top: 2vh;
-}
-
-.col-text {
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
 }
 
 .random-button {
@@ -53,45 +43,30 @@
   color: white;
   border-color: #bebebe;
   border-radius: 30px;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
   margin-top: -1vh;
-}
-
-.row-random {
-  width: 40%;
-  margin-left: 30%;
-  margin-right: 30%;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .image {
-  width: 70%;
-  margin-left: 16%;
-  margin-right: 14%;
+  width: 40%;
   margin-top: 1vh;
 }
 
-.form {
-  margin-top: -15vh;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
-  position: absolute;
-}
-
-.row-title {
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+.col-img {
+  display: flex;
+  justify-content: center;
 }
 
 .recipes {
+  display: flex;
+  justify-content: center;
   margin-top: 2vh;
-  margin-left: -0.5vw;
 }
 
 .single-recipe {
+  display: flex;
+  justify-content: center;
   margin-top: 4vh;
 }
 
@@ -105,11 +80,45 @@
 
 .error-message {
   width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
 }
 
-.col-error-message {
-  margin-top: 15vh;
-  text-align: center;
+.error-image {
+  width: 20%;
+  margin-top: 5vh;
+}
+
+@media only screen and (max-width: 1205px) {
+  .form {
+    margin-top: -90px;
+  }
+}
+
+@media only screen and (max-width: 1105px) {
+  .search {
+    width: 12em;
+  }
+  .image {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  .image {
+    width: 80%;
+  }
+  .form {
+    margin-top: -35px;
+  }
+}
+
+@media only screen and (max-width: 605px) {
+  .title {
+    font-size: 2.5em;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  .image {
+    margin-top: 8vh;
+  }
 }

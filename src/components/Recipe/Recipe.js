@@ -22,15 +22,12 @@ function Recipe({
     setFillHeart(true);
 
     localStorage.setItem(id, name);
-    //console.log(localStorage);
   }
 
   function handleClickFilledHeart() {
     setFillHeart(false);
 
     localStorage.removeItem(id);
-    //console.log(localStorage);
-    //console.log(localStorage.getItem(id));
   }
 
   return (

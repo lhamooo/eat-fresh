@@ -34,3 +34,35 @@
   font-family: "SourceSansPro-SemiBold", sans-serif;
   font-size: 2em;
 }
+
+@media only screen and (max-width: 768px) {
+  .col-image {
+    display: flex;
+    justify-content: center;
+  }
+  .meal-image {
+    width: 50%;
+  }
+
+  .li-mesure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .li-ingrediens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col-measure {
+    margin-top: 30px;
+    margin-bottom: -30px;
+  }
+
+  .col-ingrediens {
+    margin-top: 30px;
+    margin-bottom: -30px;
+  }
+}

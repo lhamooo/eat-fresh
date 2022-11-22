@@ -3,7 +3,8 @@ import "./Home.css";
 import Navbar from "../../components/Navbar/Navbar";
 import SearchIcon from "@mui/icons-material/Search";
 import image from "./image.jpg";
-import { useState, useEffect } from "react";
+import errorImage from "./sad.png";
+import { useState } from "react";
 import Recipe from "../../components/Recipe/Recipe";
 import MenuButton from "../../components/MenuButton/MenuButton";
 
@@ -42,7 +43,6 @@ function Home() {
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${meal}`
     );
     localStorage.setItem(date, meal);
-    //localStorage.clear();
     const data = await response.json();
     hasFavoriteMeal(data.meals);
     setMealArray(data.meals);
@@ -154,7 +154,7 @@ function Home() {
                 onClick={handleRandom}
               >
                 {" "}
-                random meal
+                <span>random meal</span>
               </Button>
             </Col>
           </Row>
@@ -162,6 +162,15 @@ function Home() {
           <Row>
             {isMealNull ? (
               <Container>
+                <Row>
+                  <Col>
+                    <img
+                      className="error-image"
+                      src={errorImage}
+                      alt="error"
+                    ></img>
+                  </Col>
+                </Row>
                 <Row>
                   <Col className="col-error-message">
                     <h1 className="error-message">
@@ -175,11 +184,12 @@ function Home() {
             )}
             {isMeal() ? (
               <Container className="recipes">
-                <Row xs={2} md={2} lg={3}>
+                <Row xs={1} md={2} lg={3}>
                   {mealArray.map((mealObj) => (
                     <Col className="single-recipe" key={mealObj.idMeal}>
                       {console.log(getMealInfo("strMeasure", mealObj))}
                       <Recipe
+                        className="recipe-card"
                         id={mealObj.idMeal}
                         name={mealObj.strMeal}
                         area={mealObj.strArea}
@@ -198,7 +208,7 @@ function Home() {
             )}
 
             {showPicture ? (
-              <Col>
+              <Col className="col-img">
                 <img className="image" src={image} alt="illustration"></img>
               </Col>
             ) : (

@@ -27,12 +27,12 @@ function RecipeModal({
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Container>
-            <Row>
-              <Col>
+          <Container className="modal-container">
+            <Row className="modal-row">
+              <Col xs={12} sm={12} md={6} className="col-image">
                 <img className="meal-image" src={image} alt="meal"></img>
               </Col>
-              <Col>
+              <Col className="col-measure">
                 {measure.map((m) => (
                   <li className="li-mesure">{m}</li>
                 ))}
