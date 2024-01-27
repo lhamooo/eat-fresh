@@ -6,7 +6,6 @@ import image from "./image.jpg";
 import errorImage from "./sad.png";
 import { useState } from "react";
 import Recipe from "../../components/Recipe/Recipe";
-import MenuButton from "../../components/MenuButton/MenuButton";
 
 function Home() {
   const [meal, setMeal] = useState("");
