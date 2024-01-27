@@ -239,7 +239,7 @@ function Home() {
         </Container>
       </div>
       <div className="menu-button">
-        <MenuButton />
+        {/*<MenuButton />*/}
       </div>
     </div>
   );
